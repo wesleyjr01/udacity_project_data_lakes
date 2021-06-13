@@ -12,6 +12,12 @@ __pycache__/
 *.json
 data/
 
+# ignore .pem key
+*.pem
+
+# ignore shellscript with sensitive info
+create_emr.sh
+
 # Distribution / packaging
 .Python
 build/

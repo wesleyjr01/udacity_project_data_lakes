@@ -1,0 +1,13 @@
+#!/bin/bash
+
+aws emr create-default-roles
+
+aws emr create-cluster \
+--name udacity_sparkify_cluster \
+--use-default-roles \
+--release-label emr-5.28.0  \
+--instance-count 2 \
+--applications Name=Spark \
+--ec2-attributes KeyName=<Key>,SubnetId=<SubnetId> \
+--instance-type m5.xlarge \
+--bootstrap-actions Path="s3://udacity-de-files/bootstrap.sh"
