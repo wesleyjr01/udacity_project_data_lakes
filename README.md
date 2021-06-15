@@ -18,8 +18,8 @@
   2) After that, read the `create_emr.sh.example` file to see how you should create your own `create_emr.sh` file. Then, create your EMR cluster running the script: `$ source create_emr.sh`
   3) After creating the cluster, we need to allow SSH connection to the master node, so we can copy the `etl.py` script to the master node and submit it:
     - First you need to allow SSH to the master node: https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-ssh-prereqs.html. You will need to edit an Inbout rule.
-    - SSH to your master node * `$ ssh -i PATH_TO_MY_KEY_PAIR_FILE.pem hadoop@MASTER_PUBLIC_DNS`
-    3.3) Once inside the master node, change the Pyspark Defaults to run Python3: `$ sudo sed -i -e '$a\export PYSPARK_PYTHON=/usr/bin/python3' /etc/spark/conf/spark-env.sh`
+    - SSH to your master node: `$ ssh -i PATH_TO_MY_KEY_PAIR_FILE.pem hadoop@MASTER_PUBLIC_DNS`
+    - Once inside the master node, change the Pyspark Defaults to run Python3: `$ sudo sed -i -e '$a\export PYSPARK_PYTHON=/usr/bin/python3' /etc/spark/conf/spark-env.sh`
     - Copy the etl script to your master node: `$ scp -i <PEM_KEY> etl.py hadoop@<MASTER_PUBLIC_DNV>:~/`
     - Execute it: `$ spark-submit etl.py`
 4) Now check your bucket partition with processed data and check if the tables were created. Mine were created at **s3://udacity-de-files/processed**.
