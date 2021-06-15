@@ -15,6 +15,9 @@ data/
 # ignore .pem key
 *.pem
 
+# sensitive info file
+dl.cfg
+
 # ignore shellscript with sensitive info
 create_emr.sh
 
